@@ -1,470 +1,679 @@
-## Dateistruktur für Jekyll Portfolio
-
-### _config.yml (Grundkonfiguration)
-```yaml
-title: Mein Portfolio
-email: deine-email@example.com
-description: >-
-  Portfolio-Webseite mit meinen Projekten und Informationen über meine Arbeitsweise.
-baseurl: "" # Behalte leer für username.github.io oder setze auf "/repository-name" für projektbasierte Seiten
-url: "" # Deine Domain (z.B. https://username.github.io)
-github_username: dein-github-username
-
-# Build settings
-markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-
-collections:
-  projects:
-    output: true
-    permalink: /projekte/:path/
-
-# Seiten-Navigation
-header_pages:
-  - about.md
-  - projects.md
-  - contact.md
-```
-
-### index.md (Startseite)
-```markdown
----
-layout: home
-title: Willkommen
----
-
-# Willkommen auf meiner Portfolio-Seite
-
-![Profilbild](/assets/images/profile.jpg)
-
-## Über mich
-
-Ich bin ein leidenschaftlicher [dein Beruf/Fachgebiet] mit Fokus auf [deine Spezialität]. 
-Auf dieser Seite findest du Informationen zu meinen Projekten und meiner Arbeitsweise.
-
-## Aktuelle Projekte
-
-<div class="project-grid">
-  {% for project in site.projects limit:3 %}
-    <div class="project-card">
-      <a href="{{ project.url }}">
-        <img src="{{ project.image }}" alt="{{ project.title }}">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.excerpt }}</p>
-      </a>
-    </div>
-  {% endfor %}
-</div>
-
-[Alle Projekte ansehen](/projects)
-```
-
-### about.md (Über mich/Arbeitsweise)
-```markdown
----
-layout: page
-title: Über mich
-permalink: /about/
----
-
-# Über mich
-
-![Profilbild](/assets/images/profile.jpg)
-
-## Mein Hintergrund
-
-Hier kommt dein Text über deinen beruflichen Hintergrund, Ausbildung, Erfahrungen etc.
-
-## Meine Arbeitsweise
-
-Beschreibe hier, wie du an Projekte herangehst, was dir wichtig ist und was deine besonderen Stärken sind.
-
-### Meine Werte
-
-- **Qualität:** Beschreibung...
-- **Innovation:** Beschreibung...
-- **Zuverlässigkeit:** Beschreibung...
-
-## Fähigkeiten
-
-- Fähigkeit 1
-- Fähigkeit 2
-- Fähigkeit 3
-- Fähigkeit 4
-
-## Werdegang
-
-| Jahr | Position | Unternehmen/Institution |
-|------|----------|-------------------------|
-| 20XX-heute | Position | Unternehmen |
-| 20XX-20XX | Position | Unternehmen |
-| 20XX-20XX | Position | Unternehmen |
-```
-
-### projects.md (Projektübersicht)
-```markdown
----
-layout: page
-title: Projekte
-permalink: /projects/
----
-
-# Meine Projekte
-
-Hier findest du eine Übersicht meiner wichtigsten Projekte.
-
-<div class="project-grid">
-  {% for project in site.projects %}
-    <div class="project-card">
-      <a href="{{ project.url }}">
-        <img src="{{ project.image }}" alt="{{ project.title }}">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.excerpt }}</p>
-      </a>
-    </div>
-  {% endfor %}
-</div>
-```
-
-### _projects/projekt1.md (Erstes Projekt)
-```markdown
----
-layout: project
-title: Projekt 1
-excerpt: Kurzbeschreibung des ersten Projekts.
-image: /assets/images/projekt1.jpg
----
-
-# {{ page.title }}
-
-![Projektbild]({{ page.image }})
-
-## Projektbeschreibung
-
-Hier kommt eine ausführliche Beschreibung des Projekts. Was war die Aufgabe? 
-Welche Herausforderungen gab es? Wie wurde das Projekt umgesetzt?
-
-## Technologien
-
-- Technologie 1
-- Technologie 2
-- Technologie 3
-
-## Ergebnisse
-
-Beschreibe hier die Ergebnisse des Projekts und den Mehrwert, den du geschaffen hast.
-
-## Galerie
-
-<div class="gallery">
-  <img src="/assets/images/projekt1-detail1.jpg" alt="Detail 1">
-  <img src="/assets/images/projekt1-detail2.jpg" alt="Detail 2">
-  <img src="/assets/images/projekt1-detail3.jpg" alt="Detail 3">
-</div>
-```
-
-### _projects/projekt2.md (Zweites Projekt)
-```markdown
----
-layout: project
-title: Projekt 2
-excerpt: Kurzbeschreibung des zweiten Projekts.
-image: /assets/images/projekt2.jpg
----
-
-# {{ page.title }}
-
-![Projektbild]({{ page.image }})
-
-## Projektbeschreibung
-
-Hier kommt eine ausführliche Beschreibung des Projekts. Was war die Aufgabe? 
-Welche Herausforderungen gab es? Wie wurde das Projekt umgesetzt?
-
-## Technologien
-
-- Technologie 1
-- Technologie 2
-- Technologie 3
-
-## Ergebnisse
-
-Beschreibe hier die Ergebnisse des Projekts und den Mehrwert, den du geschaffen hast.
-
-## Galerie
-
-<div class="gallery">
-  <img src="/assets/images/projekt2-detail1.jpg" alt="Detail 1">
-  <img src="/assets/images/projekt2-detail2.jpg" alt="Detail 2">
-  <img src="/assets/images/projekt2-detail3.jpg" alt="Detail 3">
-</div>
-```
-
-### _projects/projekt3.md (Drittes Projekt)
-```markdown
----
-layout: project
-title: Projekt 3
-excerpt: Kurzbeschreibung des dritten Projekts.
-image: /assets/images/projekt3.jpg
----
-
-# {{ page.title }}
-
-![Projektbild]({{ page.image }})
-
-## Projektbeschreibung
-
-Hier kommt eine ausführliche Beschreibung des Projekts. Was war die Aufgabe? 
-Welche Herausforderungen gab es? Wie wurde das Projekt umgesetzt?
-
-## Technologien
-
-- Technologie 1
-- Technologie 2
-- Technologie 3
-
-## Ergebnisse
-
-Beschreibe hier die Ergebnisse des Projekts und den Mehrwert, den du geschaffen hast.
-
-## Galerie
-
-<div class="gallery">
-  <img src="/assets/images/projekt3-detail1.jpg" alt="Detail 1">
-  <img src="/assets/images/projekt3-detail2.jpg" alt="Detail 2">
-  <img src="/assets/images/projekt3-detail3.jpg" alt="Detail 3">
-</div>
-```
-
-### contact.md (Kontaktseite)
-```markdown
----
-layout: page
-title: Kontakt
-permalink: /contact/
----
-
-# Kontaktiere mich
-
-Du hast Fragen oder möchtest mit mir zusammenarbeiten? Kontaktiere mich gerne über einen der folgenden Wege:
-
-- E-Mail: [deine-email@example.com](mailto:deine-email@example.com)
-- LinkedIn: [Dein Name](https://www.linkedin.com/in/dein-profil/)
-- GitHub: [Dein Username](https://github.com/dein-username)
-
-## Kontaktformular
-
-<form action="https://formspree.io/f/deine-formspree-id" method="POST">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required>
-  </div>
-  
-  <div class="form-group">
-    <label for="email">E-Mail</label>
-    <input type="email" name="_replyto" id="email" required>
-  </div>
-  
-  <div class="form-group">
-    <label for="message">Nachricht</label>
-    <textarea name="message" id="message" rows="5" required></textarea>
-  </div>
-  
-  <button type="submit">Senden</button>
-</form>
-```
-
-### _layouts/project.html (Layout für Projektseiten)
-```html
----
-layout: default
----
-<article class="project">
-  <header class="project-header">
-    <h1>{{ page.title }}</h1>
-  </header>
-
-  <div class="project-content">
-    {{ content }}
-  </div>
-
-  <a href="/projects" class="back-button">← Zurück zur Projektübersicht</a>
-</article>
-```
-
-### assets/css/style.scss (Stylesheet für Anpassungen)
-```scss
----
----
-
-@import "minima";
-
-// Grundlegende Stilanpassungen
-body {
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.6;
-  color: #333;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-}
-
-// Header
-.site-header {
-  border-top: 5px solid #424242;
-  border-bottom: 1px solid #e8e8e8;
-  min-height: 55.95px;
-  background-color: #f8f8f8;
-}
-
-// Projekt-Grid
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-  margin: 30px 0;
-}
-
-.project-card {
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.project-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.project-card h3 {
-  padding: 15px 15px 0;
-  margin: 0;
-}
-
-.project-card p {
-  padding: 0 15px 15px;
-  margin: 0;
-}
-
-// Galerie
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 15px;
-  margin: 20px 0;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-// Kontaktformular
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-button[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button[type="submit"]:hover {
-  background-color: #45a049;
-}
-
-// Zurück-Button für Projektseiten
-.back-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #333;
-}
-
-.back-button:hover {
-  background-color: #e0e0e0;
-}
-
-// Responsive Design
-@media screen and (max-width: 600px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-}
-```
-
-### Gemfile (für lokale Entwicklung)
-```ruby
-source "https://rubygems.org"
-
-gem "jekyll", "~> 4.2.0"
-gem "minima", "~> 2.5"
-
-group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.12"
-  gem "jekyll-seo-tag", "~> 2.6"
-end
-
-# Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
-# and associated library.
-platforms :mingw, :x64_mingw, :mswin, :jruby do
-  gem "tzinfo", "~> 1.2"
-  gem "tzinfo-data"
-end
-
-# Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
-```
-
-### .gitignore
-```
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-```
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Vetter - Ehrliche Designs für echte Visionen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #2d1810;
+            --primary-red: #8b2635;
+            --accent-pink: #d4626d;
+            --accent-light-pink: #f4a5a5;
+            --neutral-cream: #faf8f5;
+            --neutral-beige: #f0ebe4;
+            --text-dark: #2d1810;
+            --text-light: #6b5b54;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--neutral-cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--neutral-cream);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(45, 24, 16, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Organic shapes */
+        .organic-shape {
+            position: absolute;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 200px;
+            background: var(--accent-pink);
+            top: 100px;
+            right: -50px;
+            transform: rotate(45deg);
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 300px;
+            background: var(--primary-red);
+            bottom: 200px;
+            left: -100px;
+            transform: rotate(-30deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background: var(--primary-red);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-project-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(45, 24, 16, 0.1);
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-project-card:hover {
+            transform: rotate(0deg);
+        }
+
+        .hero-project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-light-pink), var(--accent-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 60px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(45, 24, 16, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--accent-light-pink), var(--primary-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: var(--neutral-beige);
+            color: var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--neutral-beige);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-pink));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .values-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .values-list li {
+            padding: 10px 0;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .values-list li:before {
+            content: "→ ";
+            margin-right: 10px;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .process-step h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .process-step p {
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--neutral-cream);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            color: var(--accent-light-pink);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--neutral-cream);
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for images */
+        .placeholder-text {
+            font-style: italic;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">Anna Vetter</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projekte">Projekte</a></li>
+                <li><a href="#ueber-mich">Über mich</a></li>
+                <li><a href="#prozess">Prozess</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="organic-shape shape-1"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Anna Vetter</h1>
+                    <p class="tagline">Ehrliche Designs für echte Visionen</p>
+                    <p>Ich unterstütze nachhaltige und ethische Brands dabei, ihre Werte authentisch zu kommunizieren. Durch durchdachtes digitales Design machen wir gemeinsam deine Vision sichtbar.</p>
+                    <a href="#kontakt" class="cta-button">Lass uns sprechen</a>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-project-card">
+                        <div class="project-image">
+                            <span class="placeholder-text">Impact Dashboard<br>UX/UI Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projekte" class="projects">
+        <div class="container">
+            <h2 class="section-title">Ausgewählte Projekte</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <span class="placeholder-text">Impact Dashboard<br>All-in-One Tool für NGOs</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Impact Dashboard</h3>
+                        <p>Vollständiges UX/UI-Design für ein Projektmanagement-Tool speziell für NGOs. Mit KI-gestützten Optimierungsvorschlägen und durchdachter Benutzerführung.</p>
+                        <div class="project-tags">
+                            <span class="tag">UX/UI Design</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Bachelor-Projekt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span class="placeholder-text">Queeros Branding<br>Authentisch & Einladend</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Queeros Branding</h3>
+                        <p>Komplettes Branding für einen queeren Uni-Stammtisch. Authentisch, einladend und fernab von Klischees – mit einfach umsetzbaren Canva-Templates.</p>
+                        <div class="project-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Logo Design</span>
+                            <span class="tag">Templates</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span class="placeholder-text">Concrete Coffee<br>Langfristige Partnerschaft</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Concrete Coffee Roasters</h3>
+                        <p>Fast 2 Jahre kreative Zusammenarbeit: Von Social Media über Printprodukte bis zu Illustrationen. Eine flexible, vertrauensvolle Partnerschaft.</p>
+                        <div class="project-tags">
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Print Design</span>
+                            <span class="tag">Illustration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span class="placeholder-text">Gasthaus zur Sonne<br>Elegant-Rustikal</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Gasthaus zur Sonne</h3>
+                        <p>Speisekarten-Design und Logo-Optimierung im elegant-rustikalen Stil. Traditionell aber modern – in Zusammenarbeit mit einem Webentwickler.</p>
+                        <div class="project-tags">
+                            <span class="tag">Print Design</span>
+                            <span class="tag">Logo</span>
+                            <span class="tag">Gastronomie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="ueber-mich" class="about">
+        <div class="organic-shape shape-2"></div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <span class="placeholder-text">Anna Vetter<br>Portrait</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Warum nachhaltige Brands mit mir arbeiten</h3>
+                    <p>Als staatlich geprüfte Grafikdesignerin (Ausbildung + Bachelor of Arts) bringe ich 2 Jahre Agenturerfahrung bei PLSTR Digital mit. Meine Leidenschaft gilt mutigen B2C-Brands, die etwas bewegen wollen.</p>
+                    <p>Ich verstehe die Herausforderungen nachhaltiger Unternehmen: Authentisch bleiben, während man professionell auftritt. Werte kommunizieren, ohne zu predigen. Auffallen, ohne zu übertreiben.</p>
+                    <p>Meine Designs sind bunt, einladend und authentisch – genau wie die Brands, mit denen ich arbeite.</p>
+                    <ul class="values-list">
+                        <li>Nachhaltigkeit & Ethik</li>
+                        <li>Lokale Brands stärken</li>
+                        <li>Authentische Kommunikation</li>
+                        <li>Langfristige Partnerschaften</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="prozess" class="process">
+        <div class="container">
+            <h2 class="section-title">Mein Arbeitsprozess</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Verstehen</h3>
+                    <p>In einem ausführlichen Briefing und Workshop lernen wir uns kennen. Ich verstehe deine Marke, deine Werte und deine Ziele.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Entwickeln</h3>
+                    <p>Iterative Designphasen mit regelmäßigem Feedback. So entstehen Designs, die nicht nur schön aussehen, sondern auch funktionieren.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Verfeinern</h3>
+                    <p>3-Tage-Feedback-Zyklen sorgen für optimale Ergebnisse. Gemeinsam bringen wir deine Vision auf den Punkt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Lass uns deine Vision besprechen</h2>
+                <p>Bereit für ehrliche Designs, die deine Marke authentisch repräsentieren? Ich freue mich auf unser Gespräch.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>E-Mail</h4>
+                        <p>anna@annavetter.de</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Portfolio</h4>
+                        <p>Weitere Arbeiten auf Anfrage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Anna Vetter. Ehrliche Designs für echte Visionen.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(250, 248, 245, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'var(--neutral-cream)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
